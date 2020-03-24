@@ -33,7 +33,7 @@ Also, you'll need to the server running locally on your machine with the mock da
 
 1 - Follow the instructions on the [MovieServer](https://github.com/brunoalves9698/MovieServer) to have the server up and running on your machine.
 
-2 - Go to the /src/movieservice.api/appsettings.Development.json file and edit the 'Server' value into 'connectionString' key for the SqlServer of your machine.
+2 - Go to the [/src/movieservice.api/appsettings.development.json](https://github.com/brunoalves9698/MovieServer/blob/master/src/MovieService.Api/appsettings.Development.json) file and edit the 'Server' value into 'connectionString' key for the SqlServer of your machine.
 
 It should looks like this:
 
