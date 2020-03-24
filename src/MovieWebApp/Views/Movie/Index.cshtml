@@ -1,0 +1,89 @@
+﻿@model IEnumerable<MovieWebApp.Models.Movie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Filmes</h1>
+
+<br />
+<form asp-action="Index">
+    <div class="row">
+        <div class="col-xs-5 col-md-4 col-lg-3">
+            <div class="form-group">
+                <label>Gênero:</label>
+                <select name="genre" class="form-control">
+                    <option value="0">Todos</option>
+                    @foreach (var item in ViewBag.DropDownLists)
+                    {
+                        <option value="@item.Value">@item.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-5 col-md-4 col-lg-3">
+            <div class="form-group">
+                <label>Data de lançamento:</label>
+                <input type="date" name="releasedate" class="form-control" />
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <div class="form-group">
+                <label>&nbsp;</label><br />
+                <button type="submit" class="btn btn-primary">
+                    Buscar
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="movies">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 animated flipInY">
+                <div class="poster-content">
+                    <figure class="movie-container">
+                        <img src="@item.PortraitImage" />
+                        <figcaption class="movie-details">
+                            <h3 class="movie-title">@item.Name</h3>
+                            <a data-target="#movie-details-@item.Id" data-filme="@item.Id" class="btn btn-details">DETALHES</a>
+                        </figcaption>
+                    </figure>
+                    <div class="movie-room-map-content">
+                        <span>Lançamento: @item.ReleaseDate.ToShortDateString()</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mdl" id="movie-details-@item.Id">
+                <div class="mdl-container">
+                    <h2>@item.Name</h2>
+                    <div class="trailer-skin">
+                        <iframe width="936" height="468" src="@item.Trailer" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h3>Sinopse</h3>
+                            <p class="sinopse">@item.Sinopse</p>
+                        </div>
+                    </div>
+                    <br /><br />
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <p class="elenco"><strong>Elenco: </strong><span>@item.Cast</span></p>
+                            <p class="diretor"><strong>Diretor: </strong><span>@item.Director</span></p>
+                            <p class="genero"><strong>Gênero: </strong><span>@item.Genre</span></p>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <p class="duracao"><strong>Duração: </strong><span>@item.Duration</span></p>
+                            <p class="distribuidor"><strong>Distribuidor: </strong><span>@item.Distributor</span></p>
+                            <p class="classificacao"><strong>Classificação: </strong><span>@item.Rating</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
