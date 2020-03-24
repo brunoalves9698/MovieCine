@@ -19,6 +19,7 @@ This project aims to create the list of films using ASP.NET Core MVC and consumi
 - Movie Listing Screen
   - Filter by genre
   - Filter by release date
+  - Movie details
   
 ## Getting Started
 
